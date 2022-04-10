@@ -3,7 +3,7 @@
 
 - [Instalation du RAID 1](#instalation-du-raid-1)
     - [⚙️ Admin conf](#admin-conf)
-    - [Création du RAID 1](#création-du-raid-1)
+    - [💾 Création du RAID 1](#création-du-raid-1)
     - [Fin de l'installation de l'OS](#fin-de-linstallation-de-los)
 - [Configuration du server](#configuration-du-server)
     - [Installer sudo](#installer-sudo)
@@ -27,7 +27,7 @@ Installer l'iso Debian sur une clé USB et booter dessus
 - login: bastadmin
 - passwd: xxxxxx
 
-### Création du RAID 1
+### 💾Création du RAID 1
 - partitionement Manuel
 - raz des disk et avoir une seule partition "espace libre" sur les deux disk
 - Partitions DISK 1 :
