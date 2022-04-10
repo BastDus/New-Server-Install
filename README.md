@@ -2,7 +2,7 @@
 *Fresh install from scratch*
 
 - [Instalation du RAID 1](#instalation-du-raid-1)
-    - [Admin conf](#admin-conf)
+    - [⚙️ - Admin conf](#⚙️-admin-conf)
     - [Création du RAID 1](#création-du-raid-1)
     - [Fin de l'installation de l'OS](#fin-de-linstallation-de-los)
 - [Configuration du server](#configuration-du-server)
@@ -19,7 +19,7 @@
 ## Instalation du RAID 1
 Installer l'iso Debian sur une clé USB et booter dessus
 
-### Admin conf
+### ⚙️ - Admin conf
 - nom: ServerAix
 - domaine: 
 - passwd: xxxxxxxxxxxxx *(root)*
