@@ -1,5 +1,5 @@
 # DEBIAN SERVER
-## *Fresh install from scratch*
+*Fresh install from scratch*
 
 - [Instalation du RAID 1](#instalation-du-raid-1)
     - [Admin conf](#admin-conf)
@@ -14,6 +14,7 @@
     - [Modification du port SSH](#modification-du-port-ssh)
     - [Suppresion de la connexion pour Root en SSH](#suppresion-de-la-connexion-pour-Root-en-ssh)
     - [Modifier la couleur du prompt](#modifier-la-couleur-du-prompt)
+    - [Installer Docker](#installer-docker)
 
 ## Instalation du RAID 1
 Installer l'iso Debian sur une clé USB et booter dessus
