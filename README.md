@@ -146,6 +146,7 @@ fi
 
 
 ### Installer Docker
+[+ d'infos](https://docs.docker.com/engine/install/debian/)
 ```
 sudo apt update
 sudo apt upgrade
