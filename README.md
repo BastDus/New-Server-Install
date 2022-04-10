@@ -1,22 +1,22 @@
 # DEBIAN SERVER
 *Fresh install from scratch*
 
-- [Instalation du RAID 1](#instalation-du-raid-1)
+- [🧰Instalation du RAID 1](#instalation-du-raid-1)
     - [⚙️ Admin conf](#admin-conf)
-    - [💾 Création du RAID 1](#création-du-raid-1)
-    - [Fin de l'installation de l'OS](#fin-de-linstallation-de-los)
-- [Configuration du server](#configuration-du-server)
-    - [Installer sudo](#installer-sudo)
-    - [Ajout de l'admin au group sudoers](#ajout-de-ladmin-au-group-sudoers)
-    - [Récupération des firmewares manquants (facultatif)](#récupération-des-firmewares-manquants-facultatif)
-    - [Mise en place du Wifi (facultatif)](#mise-en-place-du-wifi-facultatif)
-    - [Vérifications des ports ouverts sur la machine](#vérifications-des-ports-ouvertssur-la-machine)
-    - [Modification du port SSH](#modification-du-port-ssh)
-    - [Suppresion de la connexion pour Root en SSH](#suppresion-de-la-connexion-pour-Root-en-ssh)
-    - [Modifier la couleur du prompt](#modifier-la-couleur-du-prompt)
-    - [Installer Docker](#installer-docker)
+    - [💽 Création du RAID 1](#création-du-raid-1)
+    - [🐧Fin de l'installation de l'OS](#fin-de-linstallation-de-los)
+- [🖥️Configuration du server](#configuration-du-server)
+    - [😎Installer sudo](#installer-sudo)
+    - [👤Ajout de l'admin au group sudoers](#ajout-de-ladmin-au-group-sudoers)
+    - [❓Récupération des firmewares manquants (facultatif)](#récupération-des-firmewares-manquants-facultatif)
+    - [📶Mise en place du Wifi (facultatif)](#mise-en-place-du-wifi-facultatif)
+    - [✔️Vérifications des ports ouverts sur la machine](#vérifications-des-ports-ouvertssur-la-machine)
+    - [🔗Modification du port SSH](#modification-du-port-ssh)
+    - [🚮Suppresion de la connexion pour Root en SSH](#suppresion-de-la-connexion-pour-Root-en-ssh)
+    - [🎨Modifier la couleur du prompt](#modifier-la-couleur-du-prompt)
+    - [🐋Installer Docker](#installer-docker)
 
-## Instalation du RAID 1
+## 🧰Instalation du RAID 1
 Installer l'iso Debian sur une clé USB et booter dessus
 
 ### ⚙️Admin conf
@@ -27,7 +27,7 @@ Installer l'iso Debian sur une clé USB et booter dessus
 - login: bastadmin
 - passwd: xxxxxx
 
-### 💾Création du RAID 1
+### 💽Création du RAID 1
 - partitionement Manuel
 - raz des disk et avoir une seule partition "espace libre" sur les deux disk
 - Partitions DISK 1 :
@@ -47,21 +47,21 @@ Installer l'iso Debian sur une clé USB et booter dessus
     - mount: racine /
     - laisser le reste par default
 
-### Fin de l'installation de l'OS
+### 🐧Fin de l'installation de l'OS
 - noter s'il manque un firmeware (ex: la puce wifi) on le récupèrera plus tard *<firmeware-manquant>*
 - mandataire:
 - pas de GUI/GNOME
 - ajouter un server SSH
 
-## Configuration du server
-### Installer sudo
+## 🖥️Configuration du server
+### 😎Installer sudo
 ```
 su -
 apt-get install sudo
 ```
 *(mot de passe root)*
 
-### Ajout de l'admin au group sudoers
+### 👤Ajout de l'admin au group sudoers
 ```
 su -
 adduser bastadmin sudo
@@ -69,7 +69,7 @@ reboot
 ```
 *(mot de passe root)*
 
-### Récupération des firmewares manquants (facultatif)
+### ❓Récupération des firmewares manquants (facultatif)
 mise à jours des sources apt (ajout des sources non open-source):
 ```
 sudo nano /etc/apt/sources-list
@@ -81,7 +81,7 @@ sudo apt install <firmeware-manquant>
 sudo reboot
 ```
 
-### Mise en place du Wifi (facultatif)
+### 📶Mise en place du Wifi (facultatif)
 ```
 sudo apt install net-tools
 sudo reboot
@@ -96,7 +96,7 @@ sudo apt install network-manager
 sudo nmtui
 ```
 
-### Vérifications des ports ouverts sur la machine
+### ✔️Vérifications des ports ouverts sur la machine
 ```
 netstat -antup | grep LIST
 sudo service <service-inutile> stop
@@ -104,7 +104,7 @@ sudo uninstall <service-inutile>
 netstat -antup | grep LIST
 ```
 
-### Modification du port SSH
+### 🔗Modification du port SSH
 ```
 sudo nano /etc/ssh/sshd_config
 ```
@@ -120,7 +120,7 @@ Vérifier le changement de Port
 netstat -antup | grep LIST
 ```
 
-### Suppresion de la connexion pour Root en SSH
+### 🚮Suppresion de la connexion pour Root en SSH
 Se connecter en SSH, et si la commande `su -` fonctionne, alors on peut éviter que root puisse se connecter depuis l'exterieure
 ```
 sudo nano /etc/ssh/sshd_config
@@ -130,7 +130,7 @@ Modifier
 PermitRootLogin no
 ```
 
-### Modifier la couleur du prompt
+### 🎨Modifier la couleur du prompt
 [+ d'infos](https://www.howtogeek.com/307701/how-to-customize-and-colorize-your-bash-prompt/)
 ```
 sudo nano ~/.bashrc
@@ -145,7 +145,7 @@ fi
 ```
 
 
-### Installer Docker
+### 🐋Installer Docker
 [+ d'infos](https://docs.docker.com/engine/install/debian/)
 ```
 sudo apt update
