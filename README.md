@@ -23,8 +23,8 @@ Installer l'iso Debian sur une clé USB et booter dessus
 - nom: ServerAix
 - domaine: 
 - passwd: xxxxxxxxxxxxx *(root)*
-- login: bastadmin *(admin x2)*
-- login: bastadmin
+- login: superadmin *(admin x2)*
+- login: superadmin
 - passwd: xxxxxx
 
 ### 💽Création du RAID 1
@@ -64,7 +64,7 @@ apt-get install sudo
 ### 👤Ajout de l'admin au group sudoers
 ```
 su -
-adduser bastadmin sudo
+adduser superadmin sudo
 reboot
 ```
 *(mot de passe root)*
@@ -157,5 +157,11 @@ echo "deb [arch=$(dpkg --print-architecture) signed-by=/usr/share/keyrings/docke
 sudo apt-get update
 sudo apt-get install docker-ce docker-ce-cli containerd.io
 sudo docker run hello-world
+```
+Ajouter l'utilisateur au groupe docker pour eviter de taper sudo avant docker...
+```
+sudo groupadd docker
+sudo usermod -aG docker $USER
+newgrp docker 
 ```
 
