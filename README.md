@@ -15,6 +15,10 @@
     - [🚮Suppresion de la connexion pour Root en SSH](#suppresion-de-la-connexion-pour-Root-en-ssh)
     - [🎨Modifier la couleur du prompt](#modifier-la-couleur-du-prompt)
     - [🐋Installer Docker](#installer-docker)
+- [🔁Ouverture des port sur la box](#🔁ouverture-des-port-sur-la-box)
+- [📦Containers](#containers)
+    - [🧭Nginx Proxy Manager](#🧭nginx-proxy-manager)
+    - [⚓Portainer](#⚓portainer)
 
 ## 🧰Instalation du RAID 1
 Installer l'iso Debian sur une clé USB et booter dessus
@@ -110,7 +114,7 @@ sudo nano /etc/ssh/sshd_config
 ```
 Modifier:
 ```
-Port 8822 (peu importe)
+Port 2222 (peu importe)
 AddressFamily inet
 ListenAddress 0.0.0.0 (écoute toutes les ip exterieures)
 # ListenAddress :: (évite les écoutes d'ip ipv6)
@@ -165,3 +169,46 @@ sudo usermod -aG docker $USER
 newgrp docker 
 ```
 
+## 🔁Ouverture des port sur la box (facultatif)
+Allé sur la Box (ex: Orange = 192.168.1.1)
+- Mettre une IP fixe à notre serveur (sur le server directement ou sur la box)
+- redémarer le server
+- ouvrir uniquement les ports 80, 443, et le port ssh configuré plus tôt ici : 2222
+- redirigé ces ports sur l'IP fixe de notre server
+
+    
+## 📦Containers
+Créer un dossier Docker_Container et créer un dossier par container à l'interrieur
+```
+mkdir Docker_Container
+cd Docker_Container
+```
+
+### 🧭Nginx Proxy Manager:
+```
+mkdir nginx-proxy-manager
+cd nginx-proxy-manager
+```
+y placer le fichier `docker-compose.yml` déjà préconfiguré
+```
+docker-compose up -d
+docker ps
+```
+Puis créer un sous domaine (ou pas) sur [OVH](https://www.ovh.com/manager/web/index.html#/configuration/domain/bastien-duseaux.com?tab=REDIRECTION) qui redirige vers l'IP public du server
+- Aller sur <IP DU SERVER LOCAL>:81 pour accéder au dashboard de NginxPM
+- créer un nouveau proxy host qui redirige vers <IP DU SERVER LOCAL>:81
+
+
+
+    
+### ⚓Portainer:
+```
+mkdir portainer
+cd portainer
+```
+y placer le fichier `docker-compose.yml` déjà préconfiguré
+```
+docker-compose up -d
+docker ps
+```
+Puis créer un sous domaine (ou pas) sur [OVH](https://www.ovh.com/manager/web/index.html#/configuration/domain/bastien-duseaux.com?tab=REDIRECTION) qui redirige vers l'IP public du server
