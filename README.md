@@ -12,50 +12,50 @@
     - [📶Mise en place du Wifi (facultatif)](#mise-en-place-du-wifi-facultatif)
     - [✔️Vérifications des ports ouverts sur la machine](#vérifications-des-ports-ouvertssur-la-machine)
     - [🔗Modification du port SSH](#modification-du-port-ssh)
-    - [🚮Suppresion de la connexion pour Root en SSH](#suppresion-de-la-connexion-pour-Root-en-ssh)
+    - [🚮Suppresion de la connexion pour Root en SSH](#suppresion-de-la-connexion-pour-root-en-ssh)
     - [🎨Modifier la couleur du prompt](#modifier-la-couleur-du-prompt)
     - [🐋Installer Docker](#installer-docker)
-- [🔁Ouverture des port sur la box](#🔁ouverture-des-port-sur-la-box)
+- [🔁Ouverture des port sur la box](#ouverture-des-port-sur-la-box)
 - [📦Containers](#containers)
-    - [🧭Nginx Proxy Manager](#🧭nginx-proxy-manager)
-    - [⚓Portainer](#⚓portainer)
+    - [🧭Nginx Proxy Manager](#nginx-proxy-manager)
+    - [⚓Portainer](#portainer)
 
 ## 🧰Instalation du RAID 1
 Installer l'iso Debian sur une clé USB et booter dessus
 
 ### ⚙️Admin conf
-- nom: ServerAix
-- domaine: 
-- passwd: xxxxxxxxxxxxx *(root)*
-- login: superadmin *(admin x2)*
-- login: superadmin
-- passwd: xxxxxx
+- **nom:** ServerAix
+- **domaine:** 
+- **passwd:** xxxxxxxxxxxxx *(root)*
+- **login:** superadmin *(admin x2)*
+- **login:** superadmin
+- **passwd:** xxxxxx
 
 ### 💽Création du RAID 1
-- partitionement Manuel
-- raz des disk et avoir une seule partition "espace libre" sur les deux disk
+- Choisir **Partitionement Manuel**
+- RAZ des disks et avoir une seule partition "espace libre" sur les deux disks
 - Partitions DISK 1 :
-    - 1GB -> "début" -> EFI
-    - 2GB -> "début" -> SWAP
-    - tout le reste -> "début" -> RAID ⚠️ Pas de point de montage (on le ferra plus tard)
+    - 1GB -> "début" -> **EFI**
+    - 2GB -> "début" -> **SWAP**
+    - tout le reste -> "début" -> **RAID ⚠️ Pas de point de montage (on le ferra plus tard)**
 - Partitions DISK 2 :
-    - 1GB -> "début" -> EFI
-    - 2GB -> "début" -> SWAP
-    - tout le reste -> "début" -> RAID ⚠️ Pas de point de montage (on le ferra plus tard)
+    - 1GB -> "début" -> **EFI**
+    - 2GB -> "début" -> **SWAP**
+    - tout le reste -> "début" -> **RAID ⚠️ Pas de point de montage (on le ferra plus tard)**
     
-**⚠️Monter les 2 disk EXCACTEMENT de la même façon  et dans le même ordre!!**
-- séléctionner en haut : "*RAID avec gestion logicielle*"
-- création multidisk
-- séléctionner les 2 partition en RAID
-    - type: ext4
-    - mount: racine /
+**⚠️Monter les 2 disk EXCACTEMENT de la même façon  et dans le même ordre.**
+- séléctionner en haut : **RAID avec gestion logicielle**
+- Création Multidisk
+- Séléctionner les 2 partitions en RAID
+    - **type**: ext4
+    - **mount**: racine /
     - laisser le reste par default
 
 ### 🐧Fin de l'installation de l'OS
-- noter s'il manque un firmeware (ex: la puce wifi) on le récupèrera plus tard *<firmeware-manquant>*
-- mandataire:
-- pas de GUI/GNOME
-- ajouter un server SSH
+- Noter s'il manque un firmeware *(ex: la puce wifi)* on le récupèrera plus tard **<firmeware-manquant>**
+- **mandataire:** __
+- **pas de GUI/GNOME**
+- **ajouter un server SSH**
 
 ## 🖥️Configuration du server
 ### 😎Installer sudo
@@ -74,7 +74,7 @@ reboot
 *(mot de passe root)*
 
 ### ❓Récupération des firmewares manquants (facultatif)
-mise à jours des sources apt (ajout des sources non open-source):
+Mise à jours des sources apt *(ajout des sources non open-source)*:
 ```
 sudo nano /etc/apt/sources-list
 ```
@@ -90,11 +90,11 @@ sudo reboot
 sudo apt install net-tools
 sudo reboot
 ```
-récupération de l'interface wifi *(ex: wlp20S)*:
+Récupération de l'interface wifi *(ex: wlp20S)*:
 ```
 ip a
 ```
-installation de l'outils pour la connexion wifi:
+Installation de l'outils pour la connexion wifi:
 ```
 sudo apt install network-manager
 sudo nmtui
@@ -119,17 +119,17 @@ AddressFamily inet
 ListenAddress 0.0.0.0 (écoute toutes les ip exterieures)
 # ListenAddress :: (évite les écoutes d'ip ipv6)
 ```
-Vérifier le changement de Port
+Vérifier le changement de Port:
 ```
 netstat -antup | grep LIST
 ```
 
 ### 🚮Suppresion de la connexion pour Root en SSH
-Se connecter en SSH, et si la commande `su -` fonctionne, alors on peut éviter que root puisse se connecter depuis l'exterieure
+Se connecter en SSH, et si la commande `su -` fonctionne, alors on peut éviter que Root puisse se connecter depuis l'exterieure:
 ```
 sudo nano /etc/ssh/sshd_config
 ```
-Modifier
+Modifier:
 ```
 PermitRootLogin no
 ```
@@ -139,7 +139,7 @@ PermitRootLogin no
 ```
 sudo nano ~/.bashrc
 ```
-modifier la deuxieme ligne PS1 par la même que la première :
+Modifier la deuxieme ligne PS1 par la même que la première :
 ```
 if [ "$color_prompt" = yes ]; then
     PS1='${debian_chroot:+($debian_chroot)}\[\033[01;32m\]\u@\h\[\033[00m\]:\[\033[01;34m\]\w\[\033[00m\]\$ '
@@ -150,6 +150,7 @@ fi
 
 
 ### 🐋Installer Docker
+(TODO => et docker-compose)
 [+ d'infos](https://docs.docker.com/engine/install/debian/)
 ```
 sudo apt update
@@ -170,16 +171,18 @@ newgrp docker
 ```
 
 ## 🔁Ouverture des port sur la box (facultatif)
-Allé sur la Box (ex: Orange = 192.168.1.1)
-- Mettre une IP fixe à notre serveur (sur le server directement ou sur la box)
-- redémarer le server
-- ouvrir uniquement les ports 80, 443, et le port ssh configuré plus tôt ici : 2222
-- redirigé ces ports sur l'IP fixe de notre server
+(TODO => à mettre au niveau ## Avant la configuration du server)
+- Allé sur ma Box internet *(ex: Orange = 192.168.1.1; Free = mafreebox.freebox.fr...etc...)*
+- Mettre une **IP fixe** à notre serveur (sur le server directement ou sur la box)
+- Redémarer le server
+- Ouvrir uniquement les ports 80, 443, 81 *(qu'on supprimera plus tard)* et le port SSH configuré plus tôt ici : 2222
+- Rediriger tous ces ports sur l'**IP fixe** de notre server
 
     
 ## 📦Containers
-Créer un dossier Docker_Container et créer un dossier par container à l'interrieur
+Créer un dossier `Docker_Container` à la racine de l'user et créer un dossier par container à l'interrieur
 ```
+cd
 mkdir Docker_Container
 cd Docker_Container
 ```
@@ -194,11 +197,13 @@ y placer le fichier `docker-compose.yml` déjà préconfiguré
 docker-compose up -d
 docker ps
 ```
-Puis créer un sous domaine (ou pas) sur [OVH](https://www.ovh.com/manager/web/index.html#/configuration/domain/bastien-duseaux.com?tab=REDIRECTION) qui redirige vers l'IP public du server
-- Aller sur <IP DU SERVER LOCAL>:81 pour accéder au dashboard de NginxPM
-- créer un nouveau proxy host qui redirige vers <IP DU SERVER LOCAL>:81
+- Créer un sous domaine (ou pas) sur [OVH](https://www.ovh.com/manager/web/index.html#/configuration/domain/bastien-duseaux.com?tab=REDIRECTION) qui redirige vers l'IP public du server
+- Aller sur **ip fixe:81** pour accéder au dashboard de Nginx Proxy Manager
+- Créer un nouveau *proxy host* avec le nom de domaine créér sur OVH qui redirige vers **ip fixe:81**
+- Tester le nom de domaine et si ça marche => retourner sur notre box et retirer le port 81
+- Re-tester le nom de domaine.
 
-
+**💡 Si le container a le même network que Nginx Proxy Manager, alors on peut set le "Forward Hostname / IP" avec le nom du container lors de la création d'un proxy host à la place de l'adresse IP fixe du server**
 
     
 ### ⚓Portainer:
@@ -206,9 +211,20 @@ Puis créer un sous domaine (ou pas) sur [OVH](https://www.ovh.com/manager/web/i
 mkdir portainer
 cd portainer
 ```
-y placer le fichier `docker-compose.yml` déjà préconfiguré
+Y placer le fichier `docker-compose.yml` déjà préconfiguré
 ```
 docker-compose up -d
 docker ps
 ```
-Puis créer un sous domaine (ou pas) sur [OVH](https://www.ovh.com/manager/web/index.html#/configuration/domain/bastien-duseaux.com?tab=REDIRECTION) qui redirige vers l'IP public du server
+-  Créer un sous domaine (ou pas) sur [OVH](https://www.ovh.com/manager/web/index.html#/configuration/domain/bastien-duseaux.com?tab=REDIRECTION) qui redirige vers l'IP public du server
+-  Allé sur Nginx Proxy Manager afin de créer un *proxy host* avec le nom de domaine créér sur OVH qui redirige vers **ip fixe:9000** *(voir le port dans le docker-compose.yml)*
+
+
+
+
+
+
+
+
+
+
