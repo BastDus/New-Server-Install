@@ -219,6 +219,8 @@ docker ps
 -  Créer un sous domaine (ou pas) sur [OVH](https://www.ovh.com/manager/web/index.html#/configuration/domain/bastien-duseaux.com?tab=REDIRECTION) qui redirige vers l'IP public du server
 -  Allé sur Nginx Proxy Manager afin de créer un *proxy host* avec le nom de domaine créér sur OVH qui redirige vers **ip fixe:9000** *(voir le port dans le docker-compose.yml)*
 
+    
+(TODO ==> fail2ban)
 
 
 
