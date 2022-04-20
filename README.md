@@ -15,7 +15,7 @@
     - [🚮Suppresion de la connexion pour Root en SSH](#suppresion-de-la-connexion-pour-root-en-ssh)
     - [🎨Modifier la couleur du prompt](#modifier-la-couleur-du-prompt)
     - [🐋Installer Docker](#installer-docker)
-- [🔁Ouverture des port sur la box](#ouverture-des-port-sur-la-box)
+- [🔁Ouverture des ports sur la box](#ouverture-des-ports-sur-la-box-facultatif)
 - [📦Containers](#containers)
     - [🧭Nginx Proxy Manager](#nginx-proxy-manager)
     - [⚓Portainer](#portainer)
@@ -170,8 +170,7 @@ sudo usermod -aG docker $USER
 newgrp docker 
 ```
 
-## 🔁Ouverture des port sur la box (facultatif)
-(TODO => à mettre au niveau ## Avant la configuration du server)
+## 🔁Ouverture des ports sur la box (facultatif)
 - Allé sur ma Box internet *(ex: Orange = 192.168.1.1; Free = mafreebox.freebox.fr...etc...)*
 - Mettre une **IP fixe** à notre serveur (sur le server directement ou sur la box)
 - Redémarer le server
