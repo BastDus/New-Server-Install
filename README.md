@@ -226,7 +226,8 @@ docker ps
 ```
 -  Créer un sous domaine (ou pas) sur [OVH](https://www.ovh.com/manager/web/index.html#/configuration/domain/bastien-duseaux.com?tab=REDIRECTION) qui redirige vers l'IP public du server
 -  Allé sur Nginx Proxy Manager afin de créer un *proxy host* avec le nom de domaine créér sur OVH qui redirige vers **ip fixe:9000** *(voir le port dans le docker-compose.yml)*
- **💡 Si le container a le même network que Nginx Proxy Manager, alors on peut set le "Forward Hostname / IP" avec le nom du container lors de la création d'un proxy host à la place de l'adresse IP fixe du server**
+
+**💡 Si le container a le même network que Nginx Proxy Manager, alors on peut set le "Forward Hostname / IP" avec le nom du container lors de la création d'un proxy host à la place de l'adresse IP fixe du server**
 
  
 ### ⛓️Fail2ban
@@ -274,7 +275,8 @@ docker ps
 ``` 
 -  Créer un sous domaine (ou pas) sur [OVH](https://www.ovh.com/manager/web/index.html#/configuration/domain/bastien-duseaux.com?tab=REDIRECTION) qui redirige vers l'IP public du server
 -  Allé sur Nginx Proxy Manager afin de créer un *proxy host* avec le nom de domaine créér sur OVH qui redirige vers **ip fixe:7880** *(voir le port dans le docker-compose.yml)*
- **💡 Si le container a le même network que Nginx Proxy Manager, alors on peut set le "Forward Hostname / IP" avec le nom du container lors de la création d'un proxy host à la place de l'adresse IP fixe du server**
+
+**💡 Si le container a le même network que Nginx Proxy Manager, alors on peut set le "Forward Hostname / IP" avec le nom du container lors de la création d'un proxy host à la place de l'adresse IP fixe du server**
 
 
 ### 📈Netdata
@@ -289,7 +291,8 @@ docker ps
 ``` 
 -  Créer un sous domaine (ou pas) sur [OVH](https://www.ovh.com/manager/web/index.html#/configuration/domain/bastien-duseaux.com?tab=REDIRECTION) qui redirige vers l'IP public du server
 -  Allé sur Nginx Proxy Manager afin de créer un *proxy host* avec le nom de domaine créér sur OVH qui redirige vers **ip fixe:19999** *(voir le port dans le docker-compose.yml)*
- **💡 Si le container a le même network que Nginx Proxy Manager, alors on peut set le "Forward Hostname / IP" avec le nom du container lors de la création d'un proxy host à la place de l'adresse IP fixe du server**
+ 
+**💡 Si le container a le même network que Nginx Proxy Manager, alors on peut set le "Forward Hostname / IP" avec le nom du container lors de la création d'un proxy host à la place de l'adresse IP fixe du server**
 
 
 ### 🗃️Adminer
