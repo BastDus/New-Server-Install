@@ -213,7 +213,7 @@ docker ps
 **💡 Si le container a le même network que Nginx Proxy Manager, alors on peut set le "Forward Hostname / IP" avec le nom du container lors de la création d'un proxy host à la place de l'adresse IP fixe du server**
 
     
-### ⚓Portainer:
+### ⚓Portainer
 ```
 mkdir portainer
 cd portainer
@@ -229,7 +229,7 @@ docker ps
  **💡 Si le container a le même network que Nginx Proxy Manager, alors on peut set le "Forward Hostname / IP" avec le nom du container lors de la création d'un proxy host à la place de l'adresse IP fixe du server**
 
  
-### ⛓️Fail2ban:
+### ⛓️Fail2ban
 ```
 mkdir fail2ban
 cd fail2ban
@@ -262,7 +262,7 @@ plus d'options :
 docker exec fail2ban fail2ban-client --help
 ```
 
-### 📊Goaccess:
+### 📊Goaccess
 ```
 mkdir goaccess
 cd goaccess
@@ -277,7 +277,7 @@ docker ps
  **💡 Si le container a le même network que Nginx Proxy Manager, alors on peut set le "Forward Hostname / IP" avec le nom du container lors de la création d'un proxy host à la place de l'adresse IP fixe du server**
 
 
-### 📈Netdata:
+### 📈Netdata
 ```
 mkdir netdata
 cd netdata
