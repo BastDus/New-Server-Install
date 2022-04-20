@@ -19,6 +19,10 @@
 - [📦Containers](#containers)
     - [🧭Nginx Proxy Manager](#nginx-proxy-manager)
     - [⚓Portainer](#portainer)
+    - [⛓️Fail2ban](#fail2ban)
+    - [📊Goaccess](#goaccess)
+    - [📈Netdata](#netdata)
+    - [🗃️Adminer](#adminer)
 
 ## 🧰Instalation du RAID 1
 Installer l'iso Debian sur une clé USB et booter dessus
@@ -169,6 +173,10 @@ sudo groupadd docker
 sudo usermod -aG docker $USER
 newgrp docker 
 ```
+Ajouter un network qui va nous permttre de relier NGinX aux containers
+```
+docker network create nginxProxyNetwork
+```
 
 ## 🔁Ouverture des ports sur la box (facultatif)
 - Allé sur ma Box internet *(ex: Orange = 192.168.1.1; Free = mafreebox.freebox.fr...etc...)*
@@ -192,6 +200,7 @@ mkdir nginx-proxy-manager
 cd nginx-proxy-manager
 ```
 y placer le fichier `docker-compose.yml` déjà préconfiguré
+ainsi que les dossiers data et letsencrypt
 ```
 docker-compose up -d
 docker ps
@@ -201,7 +210,6 @@ docker ps
 - Créer un nouveau *proxy host* avec le nom de domaine créér sur OVH qui redirige vers **ip fixe:81**
 - Tester le nom de domaine et si ça marche => retourner sur notre box et retirer le port 81
 - Re-tester le nom de domaine.
-
 **💡 Si le container a le même network que Nginx Proxy Manager, alors on peut set le "Forward Hostname / IP" avec le nom du container lors de la création d'un proxy host à la place de l'adresse IP fixe du server**
 
     
@@ -210,22 +218,88 @@ docker ps
 mkdir portainer
 cd portainer
 ```
-Y placer le fichier `docker-compose.yml` déjà préconfiguré
+y placer le fichier `docker-compose.yml` déjà préconfiguré
+ainsi que les dossiers data
 ```
 docker-compose up -d
 docker ps
 ```
 -  Créer un sous domaine (ou pas) sur [OVH](https://www.ovh.com/manager/web/index.html#/configuration/domain/bastien-duseaux.com?tab=REDIRECTION) qui redirige vers l'IP public du server
 -  Allé sur Nginx Proxy Manager afin de créer un *proxy host* avec le nom de domaine créér sur OVH qui redirige vers **ip fixe:9000** *(voir le port dans le docker-compose.yml)*
+ **💡 Si le container a le même network que Nginx Proxy Manager, alors on peut set le "Forward Hostname / IP" avec le nom du container lors de la création d'un proxy host à la place de l'adresse IP fixe du server**
 
-    
-(TODO ==> fail2ban)
+ 
+### ⛓️Fail2ban:
+```
+mkdir fail2ban
+cd fail2ban
+```
+y placer le fichier `docker-compose.yml` déjà préconfiguré
+ainsi que tout le dossier data
+```
+docker-compose up -d
+docker ps
+```
+voir les jails fail2ban :
+```
+docker exec fail2ban fail2ban-client status
+
+```
+voir les ban en cours fail2ban :
+```
+docker exec fail2ban fail2ban-client status <nom-de-la-jail>
+```
+unban ip :
+```
+docker exec fail2ban fail2ban-client set <nom-de-la-jail> unbanip <ip>
+```
+ban ip :
+```
+docker exec fail2ban fail2ban-client set <nom-de-la-jail> banip <ip>
+```
+plus d'options :
+```
+docker exec fail2ban fail2ban-client --help
+```
+
+### 📊Goaccess:
+```
+mkdir goaccess
+cd goaccess
+```
+y placer le fichier `docker-compose.yml` déjà préconfiguré
+```
+docker-compose up -d
+docker ps
+``` 
+-  Créer un sous domaine (ou pas) sur [OVH](https://www.ovh.com/manager/web/index.html#/configuration/domain/bastien-duseaux.com?tab=REDIRECTION) qui redirige vers l'IP public du server
+-  Allé sur Nginx Proxy Manager afin de créer un *proxy host* avec le nom de domaine créér sur OVH qui redirige vers **ip fixe:7880** *(voir le port dans le docker-compose.yml)*
+ **💡 Si le container a le même network que Nginx Proxy Manager, alors on peut set le "Forward Hostname / IP" avec le nom du container lors de la création d'un proxy host à la place de l'adresse IP fixe du server**
 
 
+### 📈Netdata:
+```
+mkdir netdata
+cd netdata
+```
+y placer le fichier `docker-compose.yml` déjà préconfiguré
+```
+docker-compose up -d
+docker ps
+``` 
+-  Créer un sous domaine (ou pas) sur [OVH](https://www.ovh.com/manager/web/index.html#/configuration/domain/bastien-duseaux.com?tab=REDIRECTION) qui redirige vers l'IP public du server
+-  Allé sur Nginx Proxy Manager afin de créer un *proxy host* avec le nom de domaine créér sur OVH qui redirige vers **ip fixe:19999** *(voir le port dans le docker-compose.yml)*
+ **💡 Si le container a le même network que Nginx Proxy Manager, alors on peut set le "Forward Hostname / IP" avec le nom du container lors de la création d'un proxy host à la place de l'adresse IP fixe du server**
 
 
-
-
-
-
+### 🗃️Adminer
+```
+mkdir adminer
+cd adminer
+```
+y placer le fichier `docker-compose.yml` déjà préconfiguré
+```
+docker-compose up -d
+docker ps
+``` 
 
