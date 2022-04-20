@@ -295,7 +295,7 @@ docker ps
 **💡 Si le container a le même network que Nginx Proxy Manager, alors on peut set le "Forward Hostname / IP" avec le nom du container lors de la création d'un proxy host à la place de l'adresse IP fixe du server**
 
 
-### 🗃️Adminer
+### 🗃Adminer
 ```
 mkdir adminer
 cd adminer
