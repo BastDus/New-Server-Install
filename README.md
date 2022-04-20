@@ -10,7 +10,7 @@
     - [👤Ajout de l'admin au group sudoers](#ajout-de-ladmin-au-group-sudoers)
     - [❓Récupération des firmewares manquants (facultatif)](#récupération-des-firmewares-manquants-facultatif)
     - [📶Mise en place du Wifi (facultatif)](#mise-en-place-du-wifi-facultatif)
-    - [✔️Vérifications des ports ouverts sur la machine](#vérifications-des-ports-ouvertssur-la-machine)
+    - [✔️Vérifications des ports ouverts sur la machine](#vérifications-des-ports-ouverts-sur-la-machine)
     - [🔗Modification du port SSH](#modification-du-port-ssh)
     - [🚮Suppresion de la connexion pour Root en SSH](#suppresion-de-la-connexion-pour-root-en-ssh)
     - [🎨Modifier la couleur du prompt](#modifier-la-couleur-du-prompt)
