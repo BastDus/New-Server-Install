@@ -27,7 +27,7 @@
 ## 🧰Instalation du RAID 1
 Installer l'iso Debian sur une clé USB et booter dessus
 
-### ⚙️Admin conf
+### ⚙Admin conf
 - **nom:** ServerAix
 - **domaine:** 
 - **passwd:** xxxxxxxxxxxxx *(root)*
@@ -61,7 +61,7 @@ Installer l'iso Debian sur une clé USB et booter dessus
 - **pas de GUI/GNOME**
 - **ajouter un server SSH**
 
-## 🖥️Configuration du server
+## 🖥Configuration du server
 ### 😎Installer sudo
 ```
 su -
@@ -104,7 +104,7 @@ sudo apt install network-manager
 sudo nmtui
 ```
 
-### ✔️Vérifications des ports ouverts sur la machine
+### ✔Vérifications des ports ouverts sur la machine
 ```
 netstat -antup | grep LIST
 sudo service <service-inutile> stop
