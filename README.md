@@ -120,7 +120,7 @@ Modifier:
 ```
 Port 2222 (peu importe)
 AddressFamily inet
-ListenAddress 0.0.0.0 (écoute toutes les ip exterieures)
+ListenAddress 0.0.0.0 (écoute toutes les ip externes)
 # ListenAddress :: (évite les écoutes d'ip ipv6)
 ```
 Vérifier le changement de Port:
@@ -129,7 +129,7 @@ netstat -antup | grep LIST
 ```
 
 ### 🚮Suppresion de la connexion pour Root en SSH
-Se connecter en SSH, et si la commande `su -` fonctionne, alors on peut éviter que Root puisse se connecter depuis l'exterieure:
+Se connecter en SSH, et si la commande `su -` fonctionne, alors on peut éviter que Root puisse se connecter depuis l'extérieur:
 ```
 sudo nano /etc/ssh/sshd_config
 ```
