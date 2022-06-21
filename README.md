@@ -28,7 +28,7 @@
 Installer l'iso Debian sur une clé USB et booter dessus
 
 ### ⚙Admin conf
-- **nom:** ServerAix
+- **nom:** MonServer
 - **domaine:** 
 - **passwd:** xxxxxxxxxxxxx *(root)*
 - **login:** superadmin *(admin x2)*
